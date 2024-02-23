@@ -28,9 +28,9 @@ function TDETowersStep(_index)
 	var _xCenter = x + sprite_get_width(_tower.sprite) / 2;
 	var _yCenter = y + sprite_get_height(_tower.sprite) / 2;
 	
-	#region Targetting and finding enemies
+	#region Targetting and finding enemies Needs optimization.
 	scoutingTimer++
-	if (scoutingTimer >= _tower.attackSpeed)
+	if (scoutingTimer >= 60 && distance_to_object(oTDEEnemy) < _tower.range)
 	{
 			// Set the position and size of the rectangle in the middle of the tower
 			var _towerRange = _tower.range;
@@ -47,7 +47,7 @@ function TDETowersStep(_index)
 			    {
 					if (targeting == TDE_TARGETING.LOWEST_HEALTH)
 					{
-						if (targetEnemy.health < _enemiesInRange[| _i].health) break;
+						if (targetEnemy.myHealth < _enemiesInRange[| _i].myHealth) break;
 						targetEnemy = _enemiesInRange[| _i]; 
 					}				
 			    }
@@ -59,7 +59,6 @@ function TDETowersStep(_index)
 	attackTimer++
 	if (instance_exists(targetEnemy) && ammo > 0 && attackTimer >= _tower.attackSpeed)
 	{
-		show_debug_message("Tried to create projectile;");
 		instance_create_depth(_xCenter, _yCenter, TDE_DEPTH_SORTING.PROJECTILES, oTDEProjectile,
 		{
 			sprite_index : _tower.projectileSprite,

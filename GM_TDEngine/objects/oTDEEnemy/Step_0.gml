@@ -1,1 +1,2 @@
 TDEEnemyFindPath(true);
+TDEEnemyCore();

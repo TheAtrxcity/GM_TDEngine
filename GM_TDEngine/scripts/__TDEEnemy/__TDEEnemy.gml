@@ -3,13 +3,13 @@ function TDEEnemy() constructor
 	static enemies = [];
 }
 
-function TDEEnemyCreate(_name, _sprite, _health, _damage, _movementSpeed, _worth) : TDEEnemy() constructor
+function TDEEnemyCreate(_name, _sprite, _myHealth, _damage, _movementSpeed, _worth) : TDEEnemy() constructor
 {
 		data = 
 		{
 			name : _name,
 			sprite : _sprite,
-			health : _health,
+			myHealth : _myHealth,
 			damage : _damage,
 			movementSpeed : _movementSpeed,
 			worth : _worth,
@@ -87,7 +87,7 @@ function TDEEnemySpawnAtEdge(_index)
 		{
 			sprite_index : _enemyData.sprite,
 			name : _enemyData.name,
-			health : _enemyData.health,
+			myHealth : _enemyData.myHealth,
 			damage : _enemyData.damage,
 			movementSpeed : _enemyData.movementSpeed,
 			worth : _enemyData.worth,
@@ -98,4 +98,13 @@ function TDEEnemySpawnAtEdge(_index)
 		}
 	}
 	else { instance_create_depth(_xPosition, _yPosition, TDE_DEPTH_SORTING.ENEMIES, _index); }
+}
+
+function TDEEnemyCore()
+{
+	if (myHealth <= 0)
+	{
+		instance_destroy();
+		TDE_MONEY += worth;
+	}
 }

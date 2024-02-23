@@ -17,7 +17,7 @@ sProjectile, // Projectile sprite
 TDEEnemyCreate(
 "Name", // Enemy Name
 sEnemy, // Sprite Index
-100, // Health
+100, // myHealth
 1, // Amount of lives removed when reaching base
 0.5, // Movement speed in pixels per frame
 1 // The amount of money received when killed
