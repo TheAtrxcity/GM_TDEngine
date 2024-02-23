@@ -30,17 +30,12 @@ function TDEEnemyFindPath(_sortDepth)
 		}
 	}
 	
-	var _isFollowingPath = (path_endaction == path_action_stop) ? false : true;
-	
-	if (!_isFollowingPath)
-	{
-		var _foundPath = mp_grid_path(global.__TDEEnemyGrid, path, x, y, oTDEBase.x, oTDEBase.y, true);
-		if (_foundPath)
-		{ 
-			path_start(path, movementSpeed, path_action_stop, 0); 
-			show_debug_message("Function TDEEnemyFindPath\nStarted Path\n");
-		}
-	}
+	//var _isFollowingPath = (path_endaction == path_action_stop) ? false : true;
+	//
+	//if (!_isFollowingPath)
+	//{
+	//		path_start(path, movementSpeed, path_action_stop, 0); 
+	//}
 	
 	if (position_meeting(x, y, oTDEBase)) { instance_destroy(); }
 }
@@ -62,7 +57,7 @@ function TDEEnemySpawnAtEdge(_index)
 	
 	while (_i < 1)
 	{
-		var _tempPath = path_add()
+		path = path_add()
 		
 		if (edge == 0)
 		{
@@ -85,18 +80,17 @@ function TDEEnemySpawnAtEdge(_index)
 		        _yPosition = irandom(room_height);
 		}
 		
-		var _foundPath = mp_grid_path(global.__TDEEnemyGrid, _tempPath, _xPosition, _yPosition, oTDEBase.x, oTDEBase.y, 1);
+		var _foundPath = mp_grid_path(global.__TDEEnemyGrid, path, _xPosition, _yPosition, oTDEBase.x, oTDEBase.y, 1);
 		if (_foundPath) 
 		{
 			_i++;
-			path_delete(_tempPath);
 		}
 	}
 	
 	if (is_real(_index))
 	{
 		var _enemyData =TDEEnemy.enemies[_index];
-		instance_create_depth(_xPosition, _yPosition, TDE_DEPTH_SORTING.ENEMIES, oTDEEnemy,
+		var _enemy = instance_create_depth(_xPosition, _yPosition, TDE_DEPTH_SORTING.ENEMIES, oTDEEnemy,
 		{
 			sprite_index : _enemyData.sprite,
 			name : _enemyData.name,
@@ -105,6 +99,10 @@ function TDEEnemySpawnAtEdge(_index)
 			movementSpeed : _enemyData.movementSpeed,
 			worth : _enemyData.worth,
 		});
+		with (_enemy)
+		{
+			path_start(other.path, movementSpeed, path_action_stop, 0);
+		}
 	}
 	else { instance_create_depth(_xPosition, _yPosition, TDE_DEPTH_SORTING.ENEMIES, _index); }
 }
