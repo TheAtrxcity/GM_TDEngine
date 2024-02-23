@@ -1,0 +1,1 @@
+repeat(100) TDEEnemySpawnAtEdge(0);

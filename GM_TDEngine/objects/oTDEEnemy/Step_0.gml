@@ -1,0 +1,1 @@
+TDEEnemyFindPath(true);
