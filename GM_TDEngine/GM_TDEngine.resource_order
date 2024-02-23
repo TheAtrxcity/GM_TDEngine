@@ -12,6 +12,7 @@
     {"name":"sEnemy","order":6,"path":"sprites/sEnemy/sEnemy.yy",},
     {"name":"sRangeSprite","order":8,"path":"sprites/sRangeSprite/sRangeSprite.yy",},
     {"name":"sGridChecker","order":1,"path":"sprites/sGridChecker/sGridChecker.yy",},
+    {"name":"sProjectile","order":9,"path":"sprites/sProjectile/sProjectile.yy",},
     {"name":"oTDETower","order":2,"path":"objects/oTDETower/oTDETower.yy",},
     {"name":"__TDEBuilding","order":18,"path":"scripts/__TDEBuilding/__TDEBuilding.yy",},
     {"name":"oGridOccupier","order":1,"path":"objects/oGridOccupier/oGridOccupier.yy",},

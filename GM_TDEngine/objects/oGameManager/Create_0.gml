@@ -7,8 +7,8 @@ sTower, // Sprite
 10, // Ammo per reload
 10, // Attack speed, Time in between shots
 120, // Reload Speed, The time it takes to reload
-0, // Projectile sprite
-0, // Speed a projectile goes
+sProjectile, // Projectile sprite
+5, // Speed a projectile goes
 0, // Damage type, 0 = Normal
 10, //Cost to buy tower
 0 // Cost to upgrade tower 

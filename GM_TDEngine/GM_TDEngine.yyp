@@ -29,6 +29,7 @@
     {"id":{"name":"sEnemy","path":"sprites/sEnemy/sEnemy.yy",},},
     {"id":{"name":"sRangeSprite","path":"sprites/sRangeSprite/sRangeSprite.yy",},},
     {"id":{"name":"sGridChecker","path":"sprites/sGridChecker/sGridChecker.yy",},},
+    {"id":{"name":"sProjectile","path":"sprites/sProjectile/sProjectile.yy",},},
     {"id":{"name":"oTDETower","path":"objects/oTDETower/oTDETower.yy",},},
     {"id":{"name":"__TDEBuilding","path":"scripts/__TDEBuilding/__TDEBuilding.yy",},},
     {"id":{"name":"fntDebug","path":"fonts/fntDebug/fntDebug.yy",},},

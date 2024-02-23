@@ -20,7 +20,6 @@ function TDETowersCreate(_sprite, _damage, _range, _ammo, _attackSpeed, _reloadS
 			cost : _cost,
 		}
 		array_push(TDETowers.towers, data);
-		show_debug_message($"{TDETowers.towers}");
 }
 
 function TDETowersStep(_index)
@@ -40,7 +39,7 @@ function TDETowersStep(_index)
 			
 			// Find targets within the towers range
 			var _enemiesInRange = ds_list_create();
-			var _enemiesCount = collision_rectangle_list( _xCenter - _halfWidth, _yCenter - _halfHeight, _towerRange, _towerRange, oTDEEnemy, false, true, _enemiesInRange, false);
+			var _enemiesCount = collision_rectangle_list(_xCenter - _halfWidth, _yCenter - _halfHeight, _xCenter + _halfWidth, _yCenter + _halfHeight, oTDEEnemy, false, true, _enemiesInRange, false);
 			targetEnemy = _enemiesInRange[| 0];
 			if (_enemiesCount > 0)
 			{
@@ -60,8 +59,25 @@ function TDETowersStep(_index)
 	attackTimer++
 	if (instance_exists(targetEnemy) && ammo > 0 && attackTimer >= _tower.attackSpeed)
 	{
-		instance_create_depth(_xCenter, _yCenter, TDE_DEPTH_SORTING.PROJECTILES, oTDEProjectile);
+		show_debug_message("Tried to create projectile;");
+		instance_create_depth(_xCenter, _yCenter, TDE_DEPTH_SORTING.PROJECTILES, oTDEProjectile,
+		{
+			sprite_index : _tower.projectileSprite,
+			projectileDirection : point_direction(_xCenter, _yCenter, targetEnemy.x, targetEnemy.y),
+			projectileSpeed : _tower.projectileSpeed,
+			projectileDamage : _tower.damage
+		});
 		ammo -= 1;
 		attackTimer = 0;
+	} 
+	else 
+	{
+		reloading = true;
+		reloadTimer++
+		if (reloadTimer > _tower.reloadSpeed)
+		{
+			ammo = _tower.ammo;
+			reloadTimer = 0;
+		}
 	}
 }

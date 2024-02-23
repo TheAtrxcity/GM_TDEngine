@@ -91,8 +91,6 @@ function TDEHelperAddCells(_originMiddle, _sprite = sprite_index, _x = x, _y = y
 	{
 	    var horizontalCells = sprite_get_width(_sprite) / GRID_WIDTH;
 	    var verticalCells = sprite_get_height(_sprite) / GRID_HEIGHT;
-	    
-		show_debug_message($"Function TDEHelperAddCells\n\nHorizontal Cells: {horizontalCells}\nVertical Cells: {verticalCells}")
 		
 	    for (var i = 0; i < horizontalCells; i++)
 	    {

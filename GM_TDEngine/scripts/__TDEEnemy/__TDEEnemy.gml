@@ -30,13 +30,6 @@ function TDEEnemyFindPath(_sortDepth)
 		}
 	}
 	
-	//var _isFollowingPath = (path_endaction == path_action_stop) ? false : true;
-	//
-	//if (!_isFollowingPath)
-	//{
-	//		path_start(path, movementSpeed, path_action_stop, 0); 
-	//}
-	
 	if (position_meeting(x, y, oTDEBase)) { instance_destroy(); }
 }
 
